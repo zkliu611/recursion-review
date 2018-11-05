@@ -16,11 +16,11 @@ describe('getElementsByClassName', function() {
       var $rootElement = $(htmlString);
       $('body').append($rootElement);
 
-      var result = getElementsByClassName('targetClassName');
-      var expectedNodeList = document.getElementsByClassName('targetClassName');
-      var expectedArray = Array.prototype.slice.apply(expectedNodeList);
+      var result = getElementsByClassName('targetClassName'); // array
+      var expectedNodeList = document.getElementsByClassName('targetClassName'); // array-like array
+      var expectedArray = Array.prototype.slice.apply(expectedNodeList); // turns array-like array into an actual array
       var equality = _.isEqual(result, expectedArray); // why can't we use `===` here?
-      expect(equality).to.equal(FILL_ME_IN);
+      expect(equality).to.equal(true);
 
       $rootElement.remove();
     });
