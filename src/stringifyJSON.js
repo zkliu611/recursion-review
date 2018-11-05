@@ -33,26 +33,33 @@ var stringifyJSON = function(obj) {
       result += stringifyJSON(obj[i]) + ',';
     }
   
-    result.slice(0, obj.length - 1);
+    result = result.slice(0, result.length - 1);
     result += ']';
     return result;
 
   }
 
-  if(type)
+  if (typeof obj === 'object') {
 
-  
+    result = '{';
 
-  // your code goes here
+    if (Object.keys(obj).length === 0) {
+      return '{}';
+    }
 
+    for (var key in obj) {
+      if (typeof obj[key] === 'function' || obj[key] === undefined) {
+        return '{}';
+      }
+    }
 
-
-
-  
-  
-  // if typeof elem === number, null, etc add quotes
-  
-  // if Array.isArray, iterate through / recursion
-  // same for obj 
+    for (var key in obj) {
+      result += stringifyJSON(key) + ':' + stringifyJSON(obj[key]) + ','; 
+    }   
+    result = result.slice(0, result.length - 1);
+    result += '}';
+    return result;
+    
+  }
 
 };
