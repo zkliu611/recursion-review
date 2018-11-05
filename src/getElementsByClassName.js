@@ -22,6 +22,7 @@ var getElementsByClassName = function(className) {
       }
     } 
   };
+
   findClassName(document.body);
   return result;
 };
